@@ -1,3 +1,4 @@
+```
 # Built application files
 *.apk
 *.ap_
@@ -30,3 +31,4 @@ proguard/
 
 # Android Studio captures folder
 captures/
+```
