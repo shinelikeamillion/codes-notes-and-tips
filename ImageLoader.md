@@ -1,12 +1,7 @@
 ```
-
 /**
  * 图片加载类
  * @author 10000_hours
- * 单例模式的两次判
- * 	1.第一次（没有作同步的处理）是判断对象有没有进行过实例化，可以过滤大部分代码
- * 	2.第二次（没有用synchronized 做同步的处理）是针对对象没有进行过实例化的情况，如果多个线程同时到达if体里面，这样需要做同步的线程会相对少一些
- *  相对直接用synchronized同步getInstance方法的好处是会提高效率（因为不用每一次都同步处理）
  */
 public class ImageLoader {
 	
@@ -46,7 +41,7 @@ public class ImageLoader {
 	
 	
 	/**
-	 * java 中并发的类信号量进行同步
+	 * 用java中并发的类：信号量进行同步
 	 */
 	private Semaphore mSemaphorePoolThreadHandler = new Semaphore(0);
 	
@@ -68,7 +63,7 @@ public class ImageLoader {
 	}
 	
 	/**
-	 * 出事化操作
+	 * 初始化操作
 	 * @param threadCount
 	 * @param type
 	 */
@@ -133,7 +128,13 @@ public class ImageLoader {
 		}
 		return null;
 	}
-
+	
+	/**
+	 * 单例模式的两次判断
+	 * 	1.第一次（没有作同步的处理）是判断对象有没有进行过实例化，可以过滤大部分代码
+	 * 	2.第二次（用synchronized 做同步的处理）是针对对象没有进行过实例化的情况，如果多个线程同时到达if体里面，这样需要做同步的线程会相对少一些
+	 *  相对直接用synchronized同步getInstance方法的好处是会提高效率（避免每一次都同步处理）
+	 */
 	private static ImageLoader getInstance () {
 		
 		if (null == mInstance) {
@@ -200,7 +201,12 @@ public class ImageLoader {
 		}
 	}
 	
-	
+	/**
+	 * 更新UI
+	 * @param path
+	 * @param imageView
+	 * @param bm
+	 */
 	private void refreshBitmap(final String path, final ImageView imageView,
 			Bitmap bm) {
 		Message message = Message.obtain();
@@ -237,7 +243,7 @@ public class ImageLoader {
 		
 		// 获取图片的宽和高，但是并不把图片加载到内存当中
 		BitmapFactory.Options options = new Options();
-		options.inJustDecodeBounds = true;//不用讲图片加载到内存
+		options.inJustDecodeBounds = true;//不用将图片加载到内存
 		BitmapFactory.decodeFile(path, options);
 		
 		options.inSampleSize = caculateInSample(options, width, height);
@@ -248,6 +254,7 @@ public class ImageLoader {
 		
 		return bitmap;
 	}
+	
 	/**
 	 * 根据需求的宽和高以及图片实际的宽和高计算SampleSize
 	 * @param options
@@ -276,7 +283,11 @@ public class ImageLoader {
 		int Height;
 	}
 	
-	// 根据imageView获取适当的压缩的宽和高
+	/**
+	 *  根据imageView获取适当的压缩的宽和高
+	 * @param imageView
+	 * @return
+	 */
 	@SuppressLint("NewApi")
 	private ImageSize getImageVeiwSize(ImageView imageView) {
 		ImageSize imageSize = new ImageSize();
@@ -295,9 +306,9 @@ public class ImageLoader {
 			width = displayMetrics.widthPixels;
 		}
 		
-		int height = imageView.getHeight();//获取imageView 的实际宽度
+		int height = imageView.getHeight();//获取imageView 的实际高度
 		if (height <= 0) {
-			height = layoutParams.height;//获取imageView在layout中声明的宽度
+			height = layoutParams.height;//获取imageView在layout中声明的高度
 		}
 		if (height <= 0) {
 			height = imageView.getMaxHeight();//检查最大值
@@ -319,7 +330,7 @@ public class ImageLoader {
 		// if (mPoolThreadHandler == null) wait(); 
 		try {
 			// 因为默认是0，所以请求会在此阻塞线程 :)
-			if (mSemaphorePoolThreadHandler == null) {
+			if (mPoolThreadHandler == null) {
 				mSemaphorePoolThreadHandler.acquire();
 			}
 		} catch (InterruptedException e) {
@@ -345,4 +356,5 @@ public class ImageLoader {
 	}
 
 }
+
 ```
