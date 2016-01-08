@@ -1,26 +1,26 @@
 ```
 <shape>
-  <!-- ÊµĞÄ -->
+  <!-- å®å¿ƒ -->
   <solid android:color="#ff9d77"/>
 
-  <!-- ½¥±ä -->
+  <!-- æ¸å˜ -->
   <gradient
     android:startColor="#ff8c00"
     android:endColor="#FFFFFF"
     android:angle="270" />
 
-  <!-- Ãè±ß -->
+  <!-- æè¾¹ -->
   <stroke
     android:width="2dp"
     android:color="#dcdcdc" />
 
-  <!-- Ô²½Ç -->
+  <!-- åœ†è§’ -->
   <corners
     android:radius="2dp" />
 
 </shape>
 ```
-angleÊÇÖ¸½¥±äµÄ½Ç¶È£¬±ØĞëÎª45µÄÕûÊı±¶£¬Ä¬ÈÏ½¥±äÄ£Ê½£¨android:type="linear"£©,¼´ÏßĞÔ½¥±ä
-¿ÉÉèÖÃÎªradial£¬¾¶Ïò½¥±ä£¬ĞèÒªÖ¸¶¨°ë¾¶£¬android£ºgradientRadius="50".
+angleæ˜¯æŒ‡æ¸å˜çš„è§’åº¦ï¼Œå¿…é¡»ä¸º45çš„æ•´æ•°å€ï¼Œé»˜è®¤æ¸å˜æ¨¡å¼ï¼ˆandroid:type="linear"ï¼‰,å³çº¿æ€§æ¸å˜
+å¯è®¾ç½®ä¸ºradialï¼Œå¾„å‘æ¸å˜ï¼Œéœ€è¦æŒ‡å®šåŠå¾„ï¼Œandroidï¼šgradientRadius="50".
 
-cornersÃè±ßÅª³ÉĞéÏß dashWith:Ò»ÌõºáÏßµÄ¿í¶È£¬dashGap:±íÊ¾¸ô¿ªµÄ¼ä¾à
+cornersæè¾¹å¼„æˆè™šçº¿ dashWith:ä¸€æ¡æ¨ªçº¿çš„å®½åº¦ï¼ŒdashGap:è¡¨ç¤ºéš”å¼€çš„é—´è·
