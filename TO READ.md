@@ -4,3 +4,4 @@
 - [Android 网络请求心路历程](http://android.jobbole.com/82349/)
 - [应用退出最优雅的方式](http://android.jobbole.com/82335/)
 - [something you must know](http://android.jobbole.com/82224/)
+- [creating fab shadow](http://stackoverflow.com/questions/24480425/android-l-fab-button-shadow)
