@@ -71,6 +71,7 @@ Observable.subscribe(Subscriber)内部实现如下:
 1. 调用 Subscriber.onStart() 。这个方法在前面已经介绍过，是一个可选的准备方法。
 2. 调用 Observable 中的 OnSubscribe.call(Subscriber) 。在这里，事件发送的逻辑开始运行。从这也可以看出，在 RxJava 中， Observable 并不是在创建的时候就立即开始发送事件，而是在它被订阅的时候，即当 subscribe() 方法执行的时候。
 3. 将传入的 Subscriber 作为 Subscription 返回。这是为了方便 unsubscribe().
+## 线程控制--Scheduler(一）
 
 
 
