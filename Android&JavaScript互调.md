@@ -1,7 +1,7 @@
 ## Android & JavaScript互调
 ```
 // javaScript 需要调用的方法
-private InJavaScript {
+private class InJavaScript {
      Context context;
 
      InJavaScript () {}
